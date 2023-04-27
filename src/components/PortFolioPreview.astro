@@ -1,0 +1,42 @@
+---
+const { img, href } = Astro.props;
+---
+
+<a class="card" href={href}>
+  <img src={img} alt={img || ""} loading="lazy" decoding="async" />
+</a>
+
+<style>
+  .card {
+    display: flex;
+	flex-direction: column;
+    grid-template: auto / auto;
+    background: var(--gradient-subtle);
+    border: 2px solid var(--black-800);
+    border-radius: 0.75rem;
+    overflow: hidden;
+    box-shadow: var(--shadow-sm);
+    transition: box-shadow var(--theme-transition);
+  }
+
+  .card:hover {
+    box-shadow: var(--shadow-md);
+  }
+
+  img {
+    grid-area: 1 / 1 / 3 / 3;
+    width: 100%;
+    object-fit: cover;
+  }
+
+  .image-wrapper {
+    position: relative;
+    overflow: hidden;
+  }
+
+  @media (min-width: 50em) {
+    .card {
+      border-radius: 1.5rem;
+    }
+  }
+</style>
