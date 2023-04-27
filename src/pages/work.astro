@@ -1,0 +1,41 @@
+---
+import BaseLayout from '../layouts/Layout.astro';
+
+import PortfolioPreview from '../components/PortfolioPreview.astro';
+import Hero from '../components/Hero.astro';
+import Grid from '../components/Grid.astro';
+
+
+import Saxo from "../work/saxo.jpg";
+import kokkeby from "../work/Kokkeby.jpg";
+import radioFolk from "../work/radioFolk.jpg";
+import shaolin from "../work/shaolin.jpg";
+import afuk from "../work/afuk.gif";
+import movement from "../work/Movement.gif";
+
+const projects = [Saxo, kokkeby, radioFolk, shaolin, afuk, movement];
+---
+
+<BaseLayout
+	title="My Work | Carl Alfred Hoeirup"
+	description="Learn about Carl Hoeirup's most recent projects"
+>
+	<div class="stack gap-20">
+		<main class="wrapper stack gap-8">
+			<Hero
+				title="My Work"
+				tagline="See my most recent projects below to get an idea of my past experience."
+				align="start"
+			/>
+			<Grid variant="offset">
+				{
+					projects.map((project) => (
+						<li>
+							<PortfolioPreview img={project} />
+						</li>
+					))
+				}
+			</Grid>
+		</main>
+	</div>
+</BaseLayout>
